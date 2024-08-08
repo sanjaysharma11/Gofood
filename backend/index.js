@@ -1,8 +1,14 @@
-const express = require('express');
-const app = express();
-const port = 5000;
 
-// CORS configuration to allow requests from the deployment URL
+global.foodData = require('./db')(function call(err, data, CatData) {
+  // console.log(data)
+  if(err) console.log(err);
+  global.foodData = data;
+  global.foodCategory = CatData;
+})
+
+const express = require('express')
+const app = express()
+const port = 5000
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "https://gofoodapp.vercel.app");
   res.header(
@@ -11,18 +17,14 @@ app.use((req, res, next) => {
   );
   next();
 });
+app.use(express.json())
 
-app.use(express.json());
-
-// Example route
 app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+  res.send('Hello World!')
+})
 
-// Use this route for authentication
 app.use('/api/auth', require('./Routes/Auth'));
 
-// Start the server
 app.listen(port, () => {
-  console.log(`Example app listening on http://localhost:${port}`);
-});
+  console.log(`Example app listening on http://localhost:${port}`)
+})
