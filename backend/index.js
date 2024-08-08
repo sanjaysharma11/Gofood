@@ -4,7 +4,7 @@ const port = 5000;
 
 // CORS configuration to allow requests from the deployment URL
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://localhost000.vercel.app");
+  res.setHeader("Access-Control-Allow-Origin", "https://gofoodapp.vercel.app");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
