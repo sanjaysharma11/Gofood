@@ -20,7 +20,7 @@ export default function Cart() {
     let userEmail = localStorage.getItem('userEmail');
     
     // Send order data to backend
-    let response = await fetch('https://gofoodappbackend.vercel.app/api/auth/orderData', {
+    let response = await fetch("https://gofoodappbackend.vercel.app/api/auth/orderData", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
