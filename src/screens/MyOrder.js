@@ -7,7 +7,7 @@ export default function MyOrder() {
 
     const fetchMyOrder = async () => {
         try {
-            const response = await fetch("https://gofoodappbackend.vercel.app/api/auth/myOrderData", {
+            const response = await fetch("https://gofood-7lo0.onrender.com/api/auth/myOrderData", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
