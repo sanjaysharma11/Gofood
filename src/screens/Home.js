@@ -16,9 +16,18 @@ export default function Home() {
           'Content-Type': 'application/json'
         }
       });
-      response = await response.json();
-      setFoodItems(response[0]);
-      setFoodCat(response[1]);
+
+      // Parse response
+      let responseData = await response.json();
+      console.log('Response Data:', responseData);
+
+      // Ensure the response contains the expected structure
+      if (Array.isArray(responseData) && responseData.length >= 2) {
+        setFoodItems(responseData[0]);
+        setFoodCat(responseData[1]);
+      } else {
+        console.error('Unexpected response structure:', responseData);
+      }
     } catch (error) {
       console.error('Error loading food items:', error);
     }
